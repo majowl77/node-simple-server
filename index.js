@@ -4,6 +4,7 @@ const PORT = '8080'
 http
   .createServer((req, res) => {
     /* handle http requests */
+    /* here is the code  */
   })
   .listen(PORT);
 
