@@ -5,7 +5,7 @@ const PORT = 8000;
 const server = http.createServer((req, res) => {
   if (req.method === "GET" && req.url === "/") {
     res.writeHead(200, { "Content-Type": "text/html" });
-    res.write("<h1>Hello, World! Majedah' Server is here :) <3</h1>");
+    res.write("<h1>Hello, World!</h1>");
     res.end();
   } else if (req.method === "POST" && req.url === "/") {
     let postData = "";
@@ -38,7 +38,7 @@ const server = http.createServer((req, res) => {
       price: 25.99,
       category: "Electronics",
     };
-    //const postBody = JSON.stringify(sampleProduct);
+    // const samplePostBody = JSON.stringify(sampleProduct);
 
     //the request body that contains data ex:web form where a user submits their name and email addres
     //all stored in the postBody
