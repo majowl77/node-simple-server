@@ -38,11 +38,10 @@ const server = http.createServer((req, res) => {
       price: 25.99,
       category: "Electronics",
     };
-    // const samplePostBody = JSON.stringify(sampleProduct);
+    const postBody = JSON.stringify(sampleProduct);
 
     //the request body that contains data ex:web form where a user submits their name and email addres
     //all stored in the postBody
-    let postBody = "";
     req.on("data", (data) => {
       postBody += data;
     });
@@ -59,7 +58,7 @@ const server = http.createServer((req, res) => {
         const postBodyProducts = JSON.parse(postBody);
         console.log("Request Body Data in a json format", postBodyProducts);
 
-        fs.readFile("product.json", (err, existingData) => {
+        fs.readFile("products.json", (err, existingData) => {
           if (err) {
             console.error("Error reading product data:", err);
             res.writeHead(500, { "Content-Type": "text/plain" });
@@ -67,7 +66,7 @@ const server = http.createServer((req, res) => {
           } else {
             const products = JSON.parse(existingData);
             products.push(postBodyProducts);
-            fs.writeFile("product.json", JSON.stringify(products), (error) => {
+            fs.writeFile("products.json", JSON.stringify(products), (error) => {
               if (error) {
                 console.error("Error saving product data:", error);
                 res.writeHead(500, { "Content-Type": "text/plain" });
