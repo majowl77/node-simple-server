@@ -30,18 +30,18 @@ const server = http.createServer((req, res) => {
       }
     });
   } else if (req.method === "POST" && req.url === "/products") {
-    // Handling POST requests to "/products"
+    //Handling POST requests to "/products"
 
-    // just to check
+    //just to check
     const sampleProduct = {
       name: "Sample Product",
       price: 25.99,
       category: "Electronics",
     };
-    // const postBody = JSON.stringify(sampleProduct);
+    //const postBody = JSON.stringify(sampleProduct);
 
-    //  the request body that contains data ex:web form where a user submits their name and email addres
-    // all stored in the postBody
+    //the request body that contains data ex:web form where a user submits their name and email addres
+    //all stored in the postBody
     let postBody = "";
     req.on("data", (data) => {
       postBody += data;
