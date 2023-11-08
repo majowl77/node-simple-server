@@ -7,6 +7,7 @@ const server = http.createServer((req, res) => {
     res.writeHead(200, { "Content-Type": "text/html" });
     res.write("<h1>Hello, World!</h1>");
     res.end();
+    return;
   } else if (req.method === "POST" && req.url === "/") {
     let postData = "";
     req.setEncoding("utf8");
@@ -18,17 +19,22 @@ const server = http.createServer((req, res) => {
       res.writeHead(201, { "Content-Type": "application/json" });
       res.end("Data received and logged.");
     });
+    
+    return;
   } else if (req.method === "GET" && req.url === "/products") {
     fs.readFile("./products.json", (err, data) => {
       if (err) {
         res.writeHead(500, { "Content-Type": "text/plain" });
         res.end("Internal Server Error");
+        return;
       } else {
         res.writeHead(200, { "Content-Type": "application/json" });
         res.write(data);
         res.end();
+        return;
       }
     });
+    return;
   } else if (req.method === "POST" && req.url === "/products") {
     //Handling POST requests to "/products"
 
@@ -63,6 +69,7 @@ const server = http.createServer((req, res) => {
             console.error("Error reading product data:", err);
             res.writeHead(500, { "Content-Type": "text/plain" });
             res.end("Internal Server Error");
+            return;
           } else {
             const products = JSON.parse(existingData);
             products.push(postBodyProducts);
@@ -71,13 +78,16 @@ const server = http.createServer((req, res) => {
                 console.error("Error saving product data:", error);
                 res.writeHead(500, { "Content-Type": "text/plain" });
                 res.end("Internal Server Error");
+                return;
               } else {
                 res.writeHead(201, { "Content-Type": "text/plain" });
                 res.end(
                   "Product data received and saved in the products.js file"
                 );
+                return;
               }
             });
+            return;
           }
         });
       } catch {
@@ -87,9 +97,11 @@ const server = http.createServer((req, res) => {
         res.end("Bad Request: Invalid JSON data");
       }
     });
+    return;
   } else {
     res.writeHead(404, { "Content-Type": "text/plain" });
     res.end("Not Found");
+    return;
   }
 });
 
