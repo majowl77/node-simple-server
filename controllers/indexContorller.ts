@@ -1,11 +1,11 @@
 import { Router, Request, Response } from "express";
 
-type Products = {
+type Product = {
   name: string;
   price: number;
 };
 
-const products: Products[] = [
+const products: Product[] = [
   { name: "one product", price: 70 },
   { name: "second product", price: 20 },
 ];
