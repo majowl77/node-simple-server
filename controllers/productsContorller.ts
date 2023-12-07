@@ -1,5 +1,6 @@
 import { Router, Request, Response } from "express";
 import { readFile, writeFile } from "fs";
+
 const fs = require("fs");
 
 const getAllProducts = (req: Request, res: Response) => {

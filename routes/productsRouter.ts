@@ -1,4 +1,5 @@
 import { Router, Request, Response } from "express";
+
 const {
   getAllProducts,
   addProduct,
