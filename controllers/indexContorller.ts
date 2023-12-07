@@ -13,6 +13,10 @@ const products: Product[] = [
 const sayHello = (req: Request, res: Response) => {
   res.status(200).send("Hello, world! ");
 };
+const getIdFromParams = (req: Request, res: Response) => {
+  const testID = req.params.id;
+  res.status(200).send("this's the id from the url : " + testID);
+};
 
 export const receivedData = (req: Request, res: Response) => {
   try {
@@ -43,5 +47,6 @@ export const receivedData = (req: Request, res: Response) => {
 
 module.exports = {
   sayHello,
+  getIdFromParams,
   receivedData,
 };
